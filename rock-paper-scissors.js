@@ -1,3 +1,4 @@
+//Styling results
 const styleComputer =
   "background-color: red; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
 const stylePlayer =
@@ -9,6 +10,7 @@ const styleResultC =
 const styleBlack =
   "background-color: black; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
 
+// Get the players choice.
 function getHumanChoice() {
   choise = prompt(
     "Make your selection: R for Rock or P for Paper or S for Scissors!"
@@ -31,6 +33,7 @@ function getHumanChoice() {
   return choise;
 }
 
+//Get a "random" Computer choice
 function getComputerChoice() {
   randomNum = Math.floor(Math.random() * 3) + 1;
   switch (randomNum) {
@@ -47,6 +50,7 @@ function getComputerChoice() {
   return choise;
 }
 
+//Comparing the two choices
 function checkResult(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     return (result = "Tie");
@@ -58,17 +62,26 @@ function checkResult(humanChoice, computerChoice) {
     return (result = "Win");
   } else return (result = "Lose");
 }
-playGame();
 
+//Main function that runs the game for 5 times
 function playGame() {
+  // Initialize Score values
   let humanScore = 0;
   let computerScore = 0;
+
+  //Loop that runs the game for 5 times
   for (let i = 0; i < 5; i++) {
+    //Requesting Player and Computer Choices
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
+
+    //Function that is called for every game round
     function playRound(humanChoice, computerChoice) {
+      //Output selection to console
       console.log(`You chose %c${humanChoice}`, stylePlayer);
       console.log(`Computer chose %c${computerChoice}`, styleComputer);
+
+      //Assign the result of the comparison of the choices, keep score and output result to console
       result = checkResult(humanChoice, computerChoice);
       console.log(result);
       if (result == "Win") {
@@ -90,8 +103,12 @@ function playGame() {
         );
       }
     }
+
+    //Calling the function that plays a round
     playRound(humanSelection, computerSelection);
   }
+
+  //Comparing scores to determine Winner
   if (humanScore > computerScore) {
     console.log(
       `%c You Won! You:${humanScore} Computer:${computerScore} `,
@@ -108,20 +125,5 @@ function playGame() {
       styleBlack
     );
 }
-// function checkResult() {
-//   if (choiceUser === choiceComputer) {
-//     return (result = "Tie");
-//   } else if (choiceUser === "Rock") {
-//     if (choiceComputer === "Paper") {
-//       return (result = "Lose");
-//     } else return (result = "Win");
-//   } else if (choiceUser === "Paper") {
-//     if (choiceComputer === "Scissors") {
-//       return (result = "Lose");
-//     } else return (result = "Win");
-//   } else if (choiceUser === "Scissors") {
-//     if (choiceComputer === "Rock") {
-//       return (result = "Lose");
-//     } else return (result = "Win");
-//   }
-// }
+//Calling the main Game function
+playGame();
