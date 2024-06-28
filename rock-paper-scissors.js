@@ -1,11 +1,13 @@
 const styleComputer =
-  "background-color: red; color: white; font-style: italic; border: 5px solid white; font-size: 2em;";
+  "background-color: red; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
 const stylePlayer =
-  "background-color: blue; color: white; font-style: italic; border: 5px solid white; font-size: 2em;";
+  "background-color: blue; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
 const styleResultP =
   "background-color: blue; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
 const styleResultC =
   "background-color: red; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
+const styleBlack =
+  "background-color: black; color: white; font-style: italic; border: 5px solid white; font-size: 1.2em;";
 
 function getHumanChoice() {
   choise = prompt(
@@ -57,6 +59,7 @@ function checkResult(humanChoice, computerChoice) {
   } else return (result = "Lose");
 }
 playGame();
+
 function playGame() {
   let humanScore = 0;
   let computerScore = 0;
@@ -71,7 +74,7 @@ function playGame() {
       if (result == "Win") {
         humanScore += 1;
         console.log(
-          `%c You Won!  ${humanChoice} beats ${computerChoice} Score: You:${humanScore} Computer:${computerScore} `,
+          `%c You Win!  ${humanChoice} beats ${computerChoice} Score: You:${humanScore} Computer:${computerScore} `,
           styleResultP
         );
       } else if (result == "Lose") {
@@ -83,12 +86,27 @@ function playGame() {
       } else {
         console.log(
           `%c It is a Tie! You both selected ${humanChoice} Score: You:${humanScore} Computer:${computerScore} `,
-          styleResultC
+          styleBlack
         );
       }
     }
     playRound(humanSelection, computerSelection);
   }
+  if (humanScore > computerScore) {
+    console.log(
+      `%c You Won! You:${humanScore} Computer:${computerScore} `,
+      styleResultP
+    );
+  } else if (humanScore < computerScore) {
+    console.log(
+      `%c You Lost! You:${humanScore} Computer:${computerScore} `,
+      styleResultC
+    );
+  } else
+    console.log(
+      `%c It is a Tie! You:${humanScore} Computer:${computerScore} `,
+      styleBlack
+    );
 }
 // function checkResult() {
 //   if (choiceUser === choiceComputer) {
