@@ -54,22 +54,33 @@ console.log(`Computer chose %c${computerChoice}`, styleComputer);
 // Compare user choice VS computer choice
 result = checkResult(humanChoice, choiceComputer);
 
+// function checkResult() {
+//   if (choiceUser === choiceComputer) {
+//     return (result = "Tie");
+//   } else if (choiceUser === "Rock") {
+//     if (choiceComputer === "Paper") {
+//       return (result = "Lose");
+//     } else return (result = "Win");
+//   } else if (choiceUser === "Paper") {
+//     if (choiceComputer === "Scissors") {
+//       return (result = "Lose");
+//     } else return (result = "Win");
+//   } else if (choiceUser === "Scissors") {
+//     if (choiceComputer === "Rock") {
+//       return (result = "Lose");
+//     } else return (result = "Win");
+//   }
+// }
 function checkResult() {
   if (choiceUser === choiceComputer) {
     return (result = "Tie");
-  } else if (choiceUser === "Rock") {
-    if (choiceComputer === "Paper") {
-      return (result = "Lose");
-    } else return (result = "Win");
-  } else if (choiceUser === "Paper") {
-    if (choiceComputer === "Scissors") {
-      return (result = "Lose");
-    } else return (result = "Win");
-  } else if (choiceUser === "Scissors") {
-    if (choiceComputer === "Rock") {
-      return (result = "Lose");
-    } else return (result = "Win");
-  }
+  } else if (
+    (choiceUser == Rock && choiceComputer == Scissors) ||
+    (choiceUser == Scisors && choiceComputer == Paper) ||
+    (choiceUser == Paper && choiceComputer == Rock)
+  ) {
+    return (result = "Win");
+  } else return (result = "Lose");
 }
 console.log(result);
 
