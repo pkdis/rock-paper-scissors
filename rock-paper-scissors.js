@@ -52,4 +52,25 @@ console.log(`You chose %c${humanChoice}`, stylePlayer);
 console.log(`Computer chose %c${computerChoice}`, styleComputer);
 
 // Compare user choice VS computer choice
+result = checkResult(humanChoice, choiceComputer);
+
+function checkResult() {
+  if (choiceUser === choiceComputer) {
+    return (result = "Tie");
+  } else if (choiceUser === "Rock") {
+    if (choiceComputer === "Paper") {
+      return (result = "Lose");
+    } else return (result = "Win");
+  } else if (choiceUser === "Paper") {
+    if (choiceComputer === "Scissors") {
+      return (result = "Lose");
+    } else return (result = "Win");
+  } else if (choiceUser === "Scissors") {
+    if (choiceComputer === "Rock") {
+      return (result = "Lose");
+    } else return (result = "Win");
+  }
+}
+console.log(result);
+
 // Declare winner
