@@ -12,25 +12,25 @@ const styleBlack =
 
 // Get the players choice.
 function getHumanChoice() {
-  choise = prompt(
+  choice = prompt(
     "Make your selection: R for Rock or P for Paper or S for Scissors!"
   );
-  if (choise == "r" || choise == "R" || choise.toLowerCase() == "rock") {
-    choise = "Rock";
+  if (choice == "r" || choice == "R" || choice.toLowerCase() == "rock") {
+    choice = "Rock";
   } else if (
-    choise == "p" ||
-    choise == "P" ||
-    choise.toLowerCase() == "paper"
+    choice == "p" ||
+    choice == "P" ||
+    choice.toLowerCase() == "paper"
   ) {
-    choise = "Paper";
+    choice = "Paper";
   } else if (
-    choise == "s" ||
-    choise == "S" ||
-    choise.toLowerCase() == "scissors"
+    choice == "s" ||
+    choice == "S" ||
+    choice.toLowerCase() == "scissors"
   ) {
-    choise = "Scissors";
+    choice = "Scissors";
   }
-  return choise;
+  return choice;
 }
 
 //Get a "random" Computer choice
@@ -38,29 +38,29 @@ function getComputerChoice() {
   randomNum = Math.floor(Math.random() * 3) + 1;
   switch (randomNum) {
     case 1:
-      choise = "Rock";
+      choice = "Rock";
       break;
     case 2:
-      choise = "Paper";
+      choice = "Paper";
       break;
     case 3:
-      choise = "Scissors";
+      choice = "Scissors";
       break;
   }
-  return choise;
+  return choice;
 }
 
 //Comparing the two choices
 function checkResult(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
-    return (result = "Tie");
+    return "Tie";
   } else if (
     (humanChoice === "Rock" && computerChoice === "Scissors") ||
-    (humanChoice === "Scisors" && computerChoice === "Paper") ||
+    (humanChoice === "Scissors" && computerChoice === "Paper") ||
     (humanChoice === "Paper" && computerChoice === "Rock")
   ) {
-    return (result = "Win");
-  } else return (result = "Lose");
+    return "Win";
+  } else return "Lose";
 }
 
 //Main function that runs the game for 5 times
@@ -83,7 +83,6 @@ function playGame() {
 
       //Assign the result of the comparison of the choices, keep score and output result to console
       result = checkResult(humanChoice, computerChoice);
-      console.log(result);
       if (result == "Win") {
         humanScore += 1;
         console.log(
